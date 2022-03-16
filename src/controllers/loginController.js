@@ -5,20 +5,28 @@ exports.index = (req, res) => {
 }
 
 exports.register = async (req, res) => {
+
+    try {
+
+        const login = new Login(req.body);
+        await login.register();
     
-    const login = new Login(req.body);
-    await login.register();
+        //exibir a msg de erro
+        if(login.errors.length > 0) {
+            req.flash('errors', login.errors);
+            req.session.save(() => {
+                return res.redirect('/login/index');
+            });
+            return;
+        }
 
-    //exibir a msg de erro
-    if(login.errors.length > 0) {
-        req.flash('errors', login.errors);
-
+        req.flash('success', 'Seu usuário foi criado com sucesso.');
         req.session.save(() => {
             return res.redirect('/login/index');
         });
-        return;
-    }
-
-    res.send(login.errors);
-    
+        
+    } catch (e) {
+        console.log(e);
+        return res.render('error');
+    }  
 };
