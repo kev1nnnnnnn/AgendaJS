@@ -11,9 +11,12 @@ route.get('/', homeController.index);
 route.get('/login/index', loginController.index);
 
 
-//POST
+//POST Login e Cadastro de usuario
 route.post('/login/register', loginController.register);
+route.post('/login/login', loginController.login);
 
+//LOGOUT
+route.get('/login/logout', loginController.logout);
 
 // exporta para outros arquivos
 module.exports = route;

@@ -9,4 +9,5 @@
 <% } %>
 
 ===================
-npm i validator
+npm i validator -- para validações 
+npm i bcryptjs  -- para criptografias
