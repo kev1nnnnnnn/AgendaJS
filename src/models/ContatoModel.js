@@ -64,5 +64,19 @@ Contato.prototype.edit = async function(id) {
   if(this.errors.length > 0) return;
   this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true });
 };
+
+//métodos estáticos, não vão pro protoype
+Contato.buscaPorId = async (id) => {
+
+  if(typeof id !== 'string') return;
+
+  return await ContatoModel.findById(id);
+} 
+
+//Listar contatos
+Contato.buscContatos = async () => {
+
+  return await ContatoModel.find(id).sort({criadoEm: -1});
+} 
  
 module.exports = Contato;
