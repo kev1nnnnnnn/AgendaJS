@@ -23,6 +23,8 @@
     "express-session": "^1.17.2",
     "helmet": "^5.0.2",
     "mongoose": "^6.1.9",
+    "npm": "^8.5.4",
+    "pm2": "^5.2.0",
     "regenerator-runtime": "^0.13.9",
     "validator": "^13.7.0"
   },
