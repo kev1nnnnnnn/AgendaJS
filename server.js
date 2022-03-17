@@ -6,7 +6,11 @@ const port = 3000;
 //todo - conexão com a base de dados
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB,  { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB,  
+  { useNewUrlParser: true, 
+    useUnifiedTopology: true,
+  
+  })
 .then(() => {
 
     console.log('conectei a base de dados');

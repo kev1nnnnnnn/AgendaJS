@@ -76,7 +76,16 @@ Contato.buscaPorId = async (id) => {
 //Listar contatos
 Contato.buscContatos = async () => {
 
-  return await ContatoModel.find(id).sort({criadoEm: -1});
+  const contatos = await ContatoModel.find()
+    .sort({ criadoEm: -1 });
+  return contatos;
 } 
+
+Contato.delete = async (id) => {
+  if(typeof id !== 'string') return;
+  return await ContatoModel.findOneAndDelete({_id: id});
+  
+} 
+ 
  
 module.exports = Contato;

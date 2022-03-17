@@ -56,3 +56,18 @@ exports.edit = async function(req, res) {
     res.render('404');
   }
 };
+
+//excluir contato
+exports.delete = async  (req, res) => {
+
+  if(!req.params.id) return res.render('error');
+
+  const contato = await Contato.delete(req.params.id);
+  if(!contato) return res.render('error');
+  
+  req.flash('success', 'Contato apagado com sucesso.');
+  req.session.save(() => res.redirect('/'));
+  
+  return;
+};
+
